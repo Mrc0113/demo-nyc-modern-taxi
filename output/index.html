@@ -1,0 +1,5942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>NYC Modern Taxi Co - Operations 0.0.1 documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/atom-one-dark.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  
+</head>
+<body>
+  <div class="relative md:flex lg:flex xl:flex">
+    
+
+<input id="burger-menu" type="checkbox" />
+<label for="burger-menu" class="shadow">
+  <div class="wrapper">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</label>
+
+<div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
+  <div class="sidebar-panel__content">
+    
+      <h1 class="text-2xl font-thin">
+        NYC Modern Taxi Co - Operations 0.0.1
+      </h1>
+    
+    <ul class="text-sm mt-10 list-reset mt-2">
+      <li class="mb-3">
+        <a class="js-menu-item text-grey-darkest no-underline" href="#introduction">Introduction</a>
+      </li>
+      
+        <li class="mb-3">
+          <a class="js-menu-item text-grey-darkest no-underline" href="#servers">Servers</a>
+        </li>
+      
+    </ul>
+
+    
+      <h2 class="text-xs uppercase text-grey mt-10 mb-4 font-thin">Operations</h2>
+      <ul class="text-sm list-reset mt-2">
+        <!-- With tags in sidebar -->
+        
+          <!--Without tags in sidebar-->
+          
+            <li>
+              
+
+              
+                <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3" href="#operation-subscribe-taxinyc/ops/ride/updated/v1/{ride_status}/{driver_id}/{passenger_id}/{current_latitude}/{current_longitude}">
+                  <span class="bg-green-dark font-bold no-underline text-white uppercase p-1 mr-2 rounded" style="height: 21px;font-size: 11px;" title="Subscribe">
+                    Sub
+                  </span>
+                  
+                    <div style="display:inline-block;">
+                      
+<span class="string-chunk" style="padding-top: 2px;">taxinyc/ops/ride/updated/v1/{ride_status}/{driver_id}/{passenger_id}/{current_latitude}/{current_longitude}</span>
+
+                    </div>
+                  
+                </a>
+              
+              </a>
+            </li>
+          
+        
+      </ul>
+
+      <h2 class="text-xs uppercase text-grey mt-10 mb-4 font-thin">Messages</h2>
+      <ul class="text-sm list-reset mt-2">
+        
+          <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3" href="#message-RideUpdated">
+            <div style="display:inline-block;">
+              
+<span class="string-chunk" style="padding-top: 2px;">RideUpdated</span>
+
+            </div>
+          </a>
+        
+      </ul>
+    
+  </div>
+</div>
+    <div class="content-panel flex-1 leading-loose z-10">
+      <div class="center-block p-8">
+  <a name="introduction"></a>
+  <h1>NYC Modern Taxi Co - Operations 0.0.1</h1>
+  <div class="leading-normal mb-4">
+    
+    <a class="border border-solid border-purple-lighter hover:bg-purple-lighter hover:text-purple-dark font-bold no-underline text-purple text-xs uppercase rounded mr-2 px-3 py-1"
+      href="https://codelabs.solace.dev/codelabs/design-to-code-workshop/#1" target="_blank">Terms of Service</a>
+    
+    
+  </div>
+
+  <div class="markdown">
+    <p>This is a simulated event feed for the fictional &quot;Modern NYC Taxi Co&quot; for the purposes of learning. The event feed simulates taxis streaming real-time events that include ride and location information.</p>
+<ul>
+<li>
+<p>The dataset used originally comes from the NYC Taxi &amp; Limousine Commission's  open data release of more than a billion taxi ride records.  Google then extended one week worth of data (3M taxi rides) from their original pickup  and drop-off points into full routes in order to simulate a fleet of taxis roaming the streets of NYC  as they define <a href="https://codelabs.developers.google.com/codelabs/cloud-dataflow-nyc-taxi-tycoon/#0">here</a>.  Solace is streaming this data over Solace PubSub+ for you to analyze and process.</p>
+</li>
+<li>
+<p><strong>Terms of Use</strong>: This dataset is publicly available for anyone to use under the following terms  provided by the Dataset Source — <a href="https://data.cityofnewyork.us/">https://data.cityofnewyork.us/</a> —  and is provided &quot;AS IS&quot; without any warranty,  express or implied, from Solace. Solace disclaims all liability for any damages, direct or indirect,  resulting from the use of the dataset.</p>
+</li>
+</ul>
+
+  </div>
+
+
+  <div class="leading-normal mb-4">
+    
+      
+      Contact link: <a class="border border-solid border-purple-lighter hover:bg-purple-lighter hover:text-purple-dark font-bold no-underline text-purple text-xs uppercase rounded mr-2 px-3 py-1"
+        href="https://solace.community" target="_blank">Solace Community</a>
+      
+      
+      Contact email: <a class="border border-solid border-purple-lighter hover:bg-purple-lighter hover:text-purple-dark font-bold no-underline text-purple text-xs uppercase rounded mr-2 px-3 py-1"
+        href="mailto:community@solace.com" target="_blank">community@solace.com</a>
+      
+    
+  </div>
+</div>
+
+
+
+<a name="servers"></a>
+<div class="center-block p-8">
+
+  <h2 class="mb-4">Servers</h2>
+
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >tcp://taxi.messaging.solace.cloud:55555</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">smf</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using SMF.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >tcps://taxi.messaging.solace.cloud:55443</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">smf</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using Secured SMF.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >wss://taxi.messaging.solace.cloud:443</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">wss</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using SMF with Secured Solace Web Messaging.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >ssl://taxi.messaging.solace.cloud:8883</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">mqtt</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using secured MQTT.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >wss://taxi.messaging.solace.cloud:8443</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">wss</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using secured MQTT over Websockets.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >https://taxi.messaging.solace.cloud:9443</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">https</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using Solace REST Messaging.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >amqps://taxi.messaging.solace.cloud:5671</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">amqps</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            <p>Connect using Secured AMQP.</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">username:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: public-taxi-user</span>
+                
+              </div>
+            </div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase">password:</span>
+              <span class="text-xs"></span>
+              <div class="inline-block">
+                
+                
+                <span class="bg-indigo-darker font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: iliketaxis</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-grey mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-grey-dark text-xs uppercase mr-1">
+                
+                
+                
+                
+                
+                User / Password:
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Connect using Solace Basic Authentication</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+
+</div>
+
+
+
+
+
+<a name="operations"></a>
+<h2 class="mb-4 ml-8">Operations</h2>
+
+
+  <div class="responsive-container">
+    
+  </div>
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-subscribe-taxinyc/ops/ride/updated/v1/{ride_status}/{driver_id}/{passenger_id}/{current_latitude}/{current_longitude}"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-dark text-green-dark uppercase p-1 rounded"
+        title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >taxinyc/ops/ride/updated/v1/{ride_status}/{driver_id}/{passenger_id}/{current_latitude}/{current_longitude}</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"><p>This dynamic channel is used for apps to send/receive RideUpdated events</p>
+</div>
+
+    <p class="text-grey text-sm"></p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+
+
+    
+    <div class="mt-2">
+        <div class="is-open">
+          <div class="js-prop cursor-pointer py-2 flex property">
+            <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+              <span class="text" style="word-break: break-word;">Parameters</span>
+              <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+              </svg>
+            </div>
+          </div>
+          <div class="children bg-grey-lighter p-4 rounded">
+            <div class="bg-grey-lightest pl-8 pr-8 rounded">
+              
+                
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">ride_status</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The current status of the ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"accepted"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"pickup"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"dropoff"</span>
+            
+          </div>
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+              
+                
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">driver_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the driver.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">1234132</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+              
+                
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the passenger.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2345243</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+              
+                
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">current_latitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current latitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-40.75473</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+              
+                
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">current_longitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current longitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-123.98385</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-grey-lighter rounded p-4 mt-2">
+  <div class="text-sm text-grey-darker mb-2">
+    
+    
+      <span class="border text-orange rounded text-s py-0 px-2">RideUpdated</span>
+    
+  </div>
+  <p class="text-grey-dark text-sm"></p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div class="bg-grey-lighter  rounded">
+  <div class="is-open">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">Payload</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A RideUpdated Event represents the latest state of an individual taxi ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "ride_id": "545496c5-a334-4344-9662-efde68c0b98a",
+  "heading": 111,
+  "latitude": 40.75473,
+  "passenger_count": 1,
+  "point_idx": 107,
+  "information_source": "RideDispatcher",
+  "speed": 8,
+  "driver": {
+    "driver_id": 1234132,
+    "rating": 4.75,
+    "last_name": "Smith",
+    "car_class": "SUV",
+    "first_name": "Frank"
+  },
+  "passenger": {
+    "passenger_id": 2345243,
+    "rating": 2.23,
+    "last_name": "Menning",
+    "first_name": "Tamimi"
+  },
+  "meter_increment": 0.02278058,
+  "longitude": -73.98385,
+  "timestamp": "2020-06-03T16:51:47.292-04:00",
+  "meter_reading": 2.4375222,
+  "ride_status": "enroute"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">ride_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A UUID identifying the ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"545496c5-a334-4344-9662-efde68c0b98a"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">heading</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 359"><= 359</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>0-359 degrees approximate heading of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">111</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">latitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current latitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-40.75473</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger_count</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The number of passengers in the car during this ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">1</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">point_idx</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The update number for the ride. This increments for each RideUpdate for a given ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">107</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">information_source</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The app that sent this event.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"RideDispatcher"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">speed</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Speed of the taxi in unknown units.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">20</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">driver</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Information about the driver.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "driver_id": 1234132,
+  "rating": 4.73,
+  "last_name": "Smith",
+  "car_class": "SUV",
+  "first_name": "Frank"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">driver_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the driver.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">1234132</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">rating</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 5"><= 5</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The driver's current 5-star rating, showing 2 decimal places of accuracy.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">4.32</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">last_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The Driver's Last Name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Smith"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">car_class</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The class of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"SUV"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Minivan"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Sedan"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Coupe"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">first_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The Driver's first name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Frank"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Information about the Passenger.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "rating": 2.25,
+  "last_name": "Menning",
+  "passenger_id": 2345243,
+  "first_name": "Tamimi"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">rating</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 5"><= 5</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's current 5-star rating, showing 2 decimal places of accuracy.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2.25</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">last_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's last name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Menning"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the passenger.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2345243</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">first_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's first name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Jesse"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">meter_increment</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The meter increment rate.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">0.02278058</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">longitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current longitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-123.98385</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">timestamp</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The time the RideUpdate is being sent.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"2020-06-03T16:51:47.292-04:00"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">meter_reading</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The current value of the taxi's meter, in dollars $.  Float value will always be shown with 2 decimal places (cents).</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2.42</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">ride_status</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The current status of the ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"accepted"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"pickup"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"dropoff"</span>
+            
+          </div>
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+</div>
+
+
+    
+
+    
+
+<div class="mt-4">
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <h5 class="examples-uid text-orange mt-4">RideUpdated</h5>
+  
+    <div class="payload-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer">Payload</span>
+        
+          <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children payload-examples mt-4">
+        
+          
+            <h6 class="text-xs font-bold text-grey-darker">Example #1</h6>
+            <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
+  "ride_id": "545496c5-a334-4344-9662-efde68c0b98a",
+  "heading": 111,
+  "latitude": 40.75473,
+  "passenger_count": 1,
+  "point_idx": 107,
+  "information_source": "RideDispatcher",
+  "speed": 8,
+  "driver": {
+    "driver_id": 1234132,
+    "rating": 4.75,
+    "last_name": "Smith",
+    "car_class": "SUV",
+    "first_name": "Frank"
+  },
+  "passenger": {
+    "passenger_id": 2345243,
+    "rating": 2.23,
+    "last_name": "Menning",
+    "first_name": "Tamimi"
+  },
+  "meter_increment": 0.02278058,
+  "longitude": -73.98385,
+  "timestamp": "2020-06-03T16:51:47.292-04:00",
+  "meter_reading": 2.4375222,
+  "ride_status": "enroute"
+}</code></pre>
+          
+        
+      </div>
+    </div>
+  
+
+  
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+
+
+
+
+
+<a name="messages"></a>
+<h2 class="ml-8 mt-4">Messages</h2>
+
+<div class="responsive-container">
+  <div class="center-block p-8">
+    <div class="all-messages pb-8">
+      
+      <a name="message-RideUpdated"></a>
+      
+
+<div class="bg-grey-lighter rounded p-4 mt-2">
+  <div class="text-sm text-grey-darker mb-2">
+    
+    <span class="text-grey-darker font-bold mr-2">#1</span>
+    
+    
+      <span class="border text-orange rounded text-s py-0 px-2">RideUpdated</span>
+    
+  </div>
+  <p class="text-grey-dark text-sm"></p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div class="bg-grey-lighter  rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">Payload</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A RideUpdated Event represents the latest state of an individual taxi ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "ride_id": "545496c5-a334-4344-9662-efde68c0b98a",
+  "heading": 111,
+  "latitude": 40.75473,
+  "passenger_count": 1,
+  "point_idx": 107,
+  "information_source": "RideDispatcher",
+  "speed": 8,
+  "driver": {
+    "driver_id": 1234132,
+    "rating": 4.75,
+    "last_name": "Smith",
+    "car_class": "SUV",
+    "first_name": "Frank"
+  },
+  "passenger": {
+    "passenger_id": 2345243,
+    "rating": 2.23,
+    "last_name": "Menning",
+    "first_name": "Tamimi"
+  },
+  "meter_increment": 0.02278058,
+  "longitude": -73.98385,
+  "timestamp": "2020-06-03T16:51:47.292-04:00",
+  "meter_reading": 2.4375222,
+  "ride_status": "enroute"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">ride_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A UUID identifying the ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"545496c5-a334-4344-9662-efde68c0b98a"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">heading</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 359"><= 359</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>0-359 degrees approximate heading of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">111</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">latitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current latitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-40.75473</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger_count</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The number of passengers in the car during this ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">1</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">point_idx</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The update number for the ride. This increments for each RideUpdate for a given ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">107</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">information_source</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The app that sent this event.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"RideDispatcher"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">speed</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Speed of the taxi in unknown units.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">20</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">driver</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Information about the driver.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "driver_id": 1234132,
+  "rating": 4.73,
+  "last_name": "Smith",
+  "car_class": "SUV",
+  "first_name": "Frank"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">driver_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the driver.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">1234132</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">rating</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 5"><= 5</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The driver's current 5-star rating, showing 2 decimal places of accuracy.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">4.32</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">last_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The Driver's Last Name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Smith"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">car_class</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The class of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"SUV"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Minivan"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Sedan"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Coupe"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">first_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The Driver's first name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Frank"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Information about the Passenger.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: {}</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">{
+  "rating": 2.25,
+  "last_name": "Menning",
+  "passenger_id": 2345243,
+  "first_name": "Tamimi"
+}</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">rating</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 5"><= 5</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's current 5-star rating, showing 2 decimal places of accuracy.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2.25</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">last_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's last name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Menning"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">passenger_id</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+integer
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>A unique ID for the passenger.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2345243</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">first_name</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+          <div class="text-red-dark text-xs">required</div>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The passenger's first name.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"Jesse"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">meter_increment</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The meter increment rate.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">0.02278058</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">longitude</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Current longitude of the vehicle.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">-123.98385</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">timestamp</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The time the RideUpdate is being sent.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"2020-06-03T16:51:47.292-04:00"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">meter_reading</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The current value of the taxi's meter, in dollars $.  Float value will always be shown with 2 decimal places (cents).</p>
+</div>
+        
+        
+          <div class="text-xs">Default: 0</div>
+        
+        
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">2.42</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+            
+            
+            
+              
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm" style="word-break: break-word;">ride_status</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>The current status of the ride.</p>
+</div>
+        
+        
+          <div class="text-xs">Default: &quot;&quot;</div>
+        
+        
+        
+          <div class="text-xs">
+            Enum:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"accepted"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"pickup"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"dropoff"</span>
+            
+          </div>
+        
+        
+          <div class="text-xs">
+            Examples:
+            
+              <span class="border text-orange rounded ml-1 py-0 px-2">"enroute"</span>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+            
+          
+        
+
+        
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+</div>
+
+
+      
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <div class="examples-panel absolute pin-t pin-r pin-b"></div>
+  </div>
+  
+  <script src="js/highlight.min.js" type="application/javascript"></script>
+  <script src="js/main.js" type="application/javascript"></script>
+  
+</body>
+</html>
